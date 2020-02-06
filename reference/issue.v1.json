@@ -1,0 +1,243 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "issue",
+    "version": "1.0",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "http://localhost:4010",
+      "description": "Local Mock Server"
+    }
+  ],
+  "paths": {
+    "/api/issue": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [
+          "Issue"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Issue"
+                  }
+                },
+                "examples": {}
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Issue"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Issue"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "operationId": "get-api-issue"
+      },
+      "post": {
+        "summary": "",
+        "operationId": "post-api-issue",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Issue"
+                },
+                "examples": {
+                  "issue-a": {
+                    "value": {
+                      "id": "1234",
+                      "part": "GT457",
+                      "type": "cfg",
+                      "reportedDate": 1234567897546
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Issue"
+              },
+              "examples": {
+                "issue-a": {
+                  "value": {
+                    "id": "1234",
+                    "part": "GT457",
+                    "type": "cfg",
+                    "reportedDate": 1234567897546
+                  }
+                }
+              }
+            },
+            "application/javascript": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Issue"
+              },
+              "examples": {
+                "issue-a": {}
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/Issue"
+              },
+              "examples": {
+                "issue-a": {
+                  "value": {
+                    "id": "1234",
+                    "part": "GT457",
+                    "type": "cfg",
+                    "reportedDate": 1234567897546
+                  }
+                }
+              }
+            }
+          },
+          "description": ""
+        },
+        "parameters": [],
+        "description": "This api is used for save one issue"
+      },
+      "put": {
+        "summary": "",
+        "operationId": "put-api-issue",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/issue/{issueId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "issueId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [
+          "Issue"
+        ],
+        "responses": {},
+        "operationId": "get-api-issue-issueId"
+      },
+      "delete": {
+        "summary": "",
+        "operationId": "delete-api-issue-issueId",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "patch": {
+        "summary": "",
+        "operationId": "patch-api-issue-issueId",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Issue": {
+        "title": "Issue",
+        "type": "object",
+        "description": "This is a issue model which reported by STBL",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "part": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "reportedDate": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "reportedDate"
+        ],
+        "x-examples": {
+          "issue-1": {
+            "id": "1234",
+            "part": "GT457",
+            "type": "cfg",
+            "reportedDate": 1234567897546
+          }
+        }
+      },
+      "Action": {
+        "title": "Action",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "issueId": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "dueDate": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "id",
+          "dueDate"
+        ]
+      }
+    }
+  }
+}
