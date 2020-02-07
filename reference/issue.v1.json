@@ -36,21 +36,29 @@
                 "schema": {
                   "$ref": "#/components/schemas/Issue"
                 }
-              }
-            }
-          },
-          "201": {
-            "description": "Created",
-            "content": {
-              "application/json": {
+              },
+              "multipart/form-data": {
                 "schema": {
-                  "$ref": "#/components/schemas/Issue"
+                  "$ref": "./action.v1.yaml"
                 }
               }
             }
           },
-          "400": {
-            "description": "Bad Request"
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFound"
+                }
+              }
+            }
           }
         },
         "operationId": "get-api-issue"
@@ -236,6 +244,24 @@
         "required": [
           "id",
           "dueDate"
+        ]
+      },
+      "NotFound": {
+        "title": "NotFound",
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer"
+          },
+          "message": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "code"
         ]
       }
     }
