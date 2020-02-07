@@ -49,8 +49,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {}
+                  "$ref": "#/components/schemas/NotFound"
                 }
               },
               "application/xml": {
@@ -263,6 +262,13 @@
         "required": [
           "code"
         ]
+      }
+    },
+    "securitySchemes": {
+      "API Key - 1": {
+        "name": "API Key",
+        "type": "apiKey",
+        "in": "header"
       }
     }
   }
