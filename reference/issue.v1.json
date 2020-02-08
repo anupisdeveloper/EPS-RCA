@@ -60,7 +60,13 @@
             }
           }
         },
-        "operationId": "get-api-issue"
+        "operationId": "get-api-issue",
+        "parameters": [],
+        "security": [
+          {
+            "API Key - 1": []
+          }
+        ]
       },
       "post": {
         "summary": "",
@@ -140,7 +146,10 @@
           "description": ""
         },
         "parameters": [],
-        "description": "This api is used for save one issue"
+        "description": "This api is used for save one issue",
+        "tags": [
+          "Issue"
+        ]
       },
       "put": {
         "summary": "",
@@ -149,7 +158,10 @@
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "tags": [
+          "Issue"
+        ]
       }
     },
     "/api/issue/{issueId}": {
@@ -178,7 +190,10 @@
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "tags": [
+          "Issue"
+        ]
       },
       "patch": {
         "summary": "",
@@ -187,7 +202,10 @@
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "tags": [
+          "Issue"
+        ]
       }
     }
   },
@@ -269,6 +287,11 @@
         "name": "API Key",
         "type": "apiKey",
         "in": "header"
+      },
+      "API Key - 2": {
+        "name": "API Key",
+        "type": "apiKey",
+        "in": "query"
       }
     }
   }
